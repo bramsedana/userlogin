@@ -26,12 +26,14 @@ To test the application, there is a blueprint for all the API in folder `bluepri
 
 This application uses an online database with two users already created for testing
 
-```Username: admin\
+```
+Username: admin\
 Password: adminpwd\
 Role: admin
 ```
 <br />
-```Username: user\
+```
+Username: user\
 Password: userpwd\
 Role: normal user
 ```
