@@ -28,11 +28,13 @@ This application uses an online database with two users already created for test
 
 ```Username: admin\
 Password: adminpwd\
-Role: admin```
+Role: admin
+```
 <br />
 ```Username: user\
 Password: userpwd\
-Role: normal user```
+Role: normal user
+```
 
 ## Application flow
 
