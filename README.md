@@ -26,16 +26,14 @@ To test the application, there is a blueprint for all the API in folder `bluepri
 
 This application uses an online database with two users already created for testing
 
-1.  Username: admin
-    Password: adminpwd
-    Role: admin
-
-2.  Username: user
-    Password: userpwd
-    Role: normal user
+Username: admin\
+Password: adminpwd\
+Role: admin
+<br />
+Username: user\
+Password: userpwd\
+Role: normal user
 
 ## Application flow
-
-this is the flow of the application
 
 # ![application](flow.png)
