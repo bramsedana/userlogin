@@ -33,3 +33,9 @@ This application uses an online database with two users already created for test
 2.  Username: user
     Password: userpwd
     Role: normal user
+
+## Application flow
+
+this is the flow of the application
+
+# ![application](flow.png)
