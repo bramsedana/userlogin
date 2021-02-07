@@ -30,6 +30,10 @@ UserSchema.methods.setRole = function(role){
   return true
 };
 
+UserSchema.methods.getRole = function(){
+  return this.role === 1 ? 'admin' : 'normal'
+};
+
 UserSchema.methods.generateJWT = function() {
   var today = new Date();
   var exp = new Date(today);
@@ -46,7 +50,7 @@ UserSchema.methods.toJSON = function(){
   return {
     id: this.id,
     username: this.username,
-    role: this.role
+    role: this.getRole()
   };
 };
 
@@ -54,7 +58,7 @@ UserSchema.methods.toAuthJSON = function(){
   return {
     username: this.username,
     token: this.generateJWT(),
-    role: this.role
+    role: this.getRole()
   };
 };
 

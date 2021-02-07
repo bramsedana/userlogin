@@ -7,7 +7,7 @@ var auth = require('../auth');
 router.param('user', function(req, res, next, slug) {
   User.findOne({ username: slug })
     .then(function (user) {
-      if (!user) { return res.sendStatus(404); }
+      if (!user) { return res.status(404).json({message: "Unauthorized"}); }
 
       req.user = user;
 
@@ -17,7 +17,7 @@ router.param('user', function(req, res, next, slug) {
 
 router.get('/user/:user', auth, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
-    if(!user || user.role !== 1){ return res.sendStatus(401); }
+    if(!user || user.role !== 1){ return res.status(401).json({message: "Unauthorized"}); }
 
     return res.json({user: req.user.toJSON()});
   }).catch(next);
@@ -25,7 +25,7 @@ router.get('/user/:user', auth, function(req, res, next){
 
 router.put('/user/:user', auth, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
-    if(!user || user.role !== 1){ return res.sendStatus(401); }
+    if(!user || user.role !== 1){ return res.status(401).json({message: "Unauthorized"}); }
 
     if(typeof req.body.user.username !== 'undefined'){
       req.user.username = req.body.user.username;
@@ -45,17 +45,17 @@ router.put('/user/:user', auth, function(req, res, next){
 
 router.delete('/user/:user', auth, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
-    if(!user || user.role !== 1){ return res.sendStatus(401); }
+    if(!user || user.role !== 1){ return res.status(401).json({message: "Unauthorized"}); }
 
     return req.user.remove().then(function(){
-      return res.status(204).json("deleted");
+      return res.json({user: user, message: "user deleted"});
     })
   }).catch(next);
 });
 
 router.get('/users', auth, function(req, res, next){
   User.findById(req.payload.id).then(function(user){
-    if(!user || user.role !== 1){ return res.sendStatus(401); }
+    if(!user || user.role !== 1){ return res.status(401).json({message: "Unauthorized"}); }
 
     var query = {};
     var limit = 20;
@@ -112,8 +112,8 @@ router.post('/users/login', function(req, res, next){
 });
 
 router.post('/users', auth, function(req, res, next){
-  User.findById(req.payload.id).then(function(user){
-    if(!user || user.role !== 1){ return res.sendStatus(401); }
+  User.findById(req.payload.id).then(function(current_user){
+    if(!current_user || current_user.role !== 1){ return res.status(401).json({message: "Unauthorized"}); }
     
     const user = new User();
   
@@ -124,7 +124,7 @@ router.post('/users', auth, function(req, res, next){
     }
   
     return user.save().then(function(){
-      return res.status(201).json({user: user.toAuthJSON()});
+      return res.json({user: user.toAuthJSON()});
     });
   }).catch(next);
 });
