@@ -1,6 +1,6 @@
 # Userlogin
 
-This repository is used for CRUD User and login
+This repository is used for CRUD User and login. This uses ExpressJS as its framework and MongoDB as its database.
 
 ## Project setup
 
