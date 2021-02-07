@@ -18,9 +18,13 @@ npm install
 node run app.js
 ```
 
+## Testing the application
+
+To test the application, there is a blueprint for all the API in folder `blueprint` that can be imported to postman 
+
 ## User example
 
-This project uses an online database with two users already created for testing
+This application uses an online database with two users already created for testing
 
 1.  Username: admin
     Password: adminpwd
