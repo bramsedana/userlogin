@@ -33,8 +33,8 @@ Role: admin
 ```
 
 ```
-Username: user\
-Password: userpwd\
+Username: user
+Password: userpwd
 Role: normal user
 ```
 
